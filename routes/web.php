@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 
 /*
@@ -42,8 +43,37 @@ use Illuminate\Support\Facades\Route;
 //Laravel 8 >=
 //Route::get('/post', 'App\\Http\\Controllers\\PostsController@index');
 //Route::get('/post/{id}/{name}', [PostController::class, 'index']);
-Route::resource('posts', 'PostsController');
+// Route::resource('posts', 'PostsController');
 
-Route::get('/contact', 'PostsController@contact');
+// Route::get('/contact', 'PostsController@contact');
 
-Route::get('post/{id}/{name}/{password}', 'PostsController@showPost');
+// Route::get('post/{id}/{name}/{password}', 'PostsController@showPost');
+
+// Route::get('/insert', function() {
+
+//     DB::insert('insert into posts(title, content) values(?, ?)', ['PHP with Laravel', 'Laravel is the best thing that has happened to PHP']);
+
+// });
+
+// Route::get('/read', function() {
+
+//     $results = DB::select('select * from posts where id = ?', [1]);
+    
+//     // foreach($results as $row ) {
+//     //     return $row->title;
+//     // }
+
+// });
+
+// Route::get('/update', function() {
+
+//     $updated = DB::update('update posts set title = "Updated title" where id = ?', [1]);
+
+//     return $updated;
+// });
+
+Route::get('/delete', function() {
+    $deleted = DB::delete('delete from posts where id = ?', [1]);
+
+    return $deleted;
+});
