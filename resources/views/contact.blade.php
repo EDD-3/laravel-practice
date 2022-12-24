@@ -1,20 +1,26 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <title>Laravel</title>
+@extends('layouts.app')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+@section('content')
+    <h1>Contact Page</h1>
 
-        <!-- Styles -->
-      
-    </head>
-    <body>
-<div class="container">
-    <h1>Contact Page  {{ $id }}</h1>
+    @if (count($people))
 
-    </h1>
-    </div>
+        <ul>
 
-</div>
-</html>
+    @foreach($people as $person)
+
+            <li>{{$person}}</li>
+
+    @endforeach
+
+        </ul>
+
+    @endif
+
+@stop
+
+@section('footer')
+
+{{-- <script> alert("Hello visitor")</script> --}}
+
+@stop
