@@ -52,6 +52,9 @@ class User extends Authenticatable
     //Many-to-many relationship
     public function roles() {
 
-        return $this->belongsToMany('App\Role');
+        return $this->belongsToMany('App\Role')->withPivot('created_at');
+
+        //If you don't follow convention
+        // return $this->belongsToMany('App\Role','user_roles','user_id','role_id');
     }
 }

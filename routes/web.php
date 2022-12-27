@@ -275,3 +275,15 @@ use PhpParser\Node\Stmt\Foreach_;
 //     }
 
 // } );
+
+//Accessing the intermediate / pivtot table
+
+Route::get('/user/pivot', function () {
+
+    $user = User::find(1);
+
+    foreach($user->roles as $role) {
+        echo $role->pivot->created_at;
+    }
+
+});
