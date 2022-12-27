@@ -4,7 +4,7 @@ namespace App;
 use Exception;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
-
+use PhpParser\Node\Stmt\Foreach_;
 
 /*
 |--------------------------------------------------------------------------
@@ -155,20 +155,20 @@ use Illuminate\Support\Facades\DB;
 
 
 //Mass assignment vulnerability
-Route::get('/create', function() {
+// Route::get('/create', function() {
 
-    Post::create(['title'=>'the create method 4', 'content' => 'Wow I\'m learning a lot with Edwin Diaz 4']);
-});
+//     Post::create([ 'user_id'=> 1,'title'=>'the create method 2', 'content' => 'Wow I\'m learning a lot with Edwin Diaz 2']);
+// });
 
-Route::get('/update', function () {
-    Post::where('id', 2)->where('is_admin',0)->update(['title'=>'New PHP TITLE', 'content'=>'I love my instructor Edwin']);
-});
+// Route::get('/update', function () {
+//     Post::where('id', 2)->where('is_admin',0)->update(['title'=>'New PHP TITLE', 'content'=>'I love my instructor Edwin']);
+// });
 
-Route::get('/delete', function(){
+// Route::get('/delete', function(){
 
-    $post = Post::find(4);
-    $post->delete();
-});
+//     $post = Post::find(4);
+//     $post->delete();
+// });
 
 // Route::get('/delete2', function() {
 
@@ -179,36 +179,99 @@ Route::get('/delete', function(){
 //     Post::where('is_admin', 0)->delete();
 // });
 
-Route::get('/softdelete',function() {
+// Route::get('/softdelete',function() {
 
-    Post::find(2)->delete();
+//     Post::find(2)->delete();
 
-});
+// });
 
-Route::get('/readsoftdelete', function() {
+// Route::get('/readsoftdelete', function() {
 
-    // $post = Post::find(1);
-    // return $post;
+//     $post = Post::find(1);
+//     return $post;
 
-    // $post = Post::withTrashed()->where('id', 1)->get();
+//     $post = Post::withTrashed()->where('id', 1)->get();
 
-    // return $post;
+//     return $post;
 
-    // $posts = Post::withTrashed()->where('is_admin', 0)->get();
+//     $posts = Post::withTrashed()->where('is_admin', 0)->get();
 
-    $posts = Post::onlyTrashed()->where('is_admin', 0)->get();
+//     $posts = Post::onlyTrashed()->where('is_admin', 0)->get();
 
-    return $posts;
+//     return $posts;
 
-});
+// });
 
-Route::get('/restore', function() {
+// Route::get('/restore', function() {
 
-    Post::withTrashed()->where('id', 2)->restore();
+//     Post::withTrashed()->where('id', 2)->restore();
 
-});
+// });
 
-Route::get('/forcedelete', function () {
+// Route::get('/forcedelete', function () {
     
-    Post::onlyTrashed()->where('is_admin', 0)->forceDelete();
-});
+//     Post::onlyTrashed()->where('is_admin', 0)->forceDelete();
+// });
+
+
+//ELONQUENT RELATIONSHIPS
+
+//One-to-one relationship
+// Route::get('/user/{id}/post', function ($id){
+
+//     try 
+//     {
+//         $post = User::findOrFail($id)->post;
+//         return $post;
+
+//     } catch (Exception $error) {
+        
+//         return 'Error Message : '.$error->getMessage();
+//     }
+   
+// });
+
+//One-to-one inverse relationship
+//Get the user by looking at the user id on the posts
+// Route::get('/post/{id}/user', function($id) {
+
+//     try {
+//         $user = Post::findOrFail($id)->user;
+//         return $user;   
+//     } catch (Exception $error) {
+//         return 'Error Message : '.$error->getMessage();
+//     }
+// });
+
+//One to many relationship
+// Route::get('/posts', function() {
+
+//         $posts = User::find(1)->posts;
+
+        
+//         foreach($posts as $post) {
+//             echo $post->title . '<br>';
+//         }
+
+// });
+
+// Route::get('/user/{id}/role', function($id) {
+
+//     $roles = User::find($id)->roles;
+//     $roles = User::find($id)->roles()->orderBy('id','desc')->get();
+
+//     return $roles;
+//     foreach($roles as $role) 
+//     {
+//         return $role->name;
+//     }
+
+//     $user = User::find($id);
+//     return $user;
+
+//     foreach ($user->roles as $role) {
+        
+//         return $role->name;
+//     }
+
+// } );

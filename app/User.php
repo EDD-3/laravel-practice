@@ -36,4 +36,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //One-to-one relationship
+    public function post (){
+        
+        return $this->hasOne('App\Post'); //Looks for the column user_id by default on the posts table
+    }
+
+    //One to many relationship
+    public function posts () {
+
+        return $this->hasMany('App\Post');
+    }
+
+    //Many-to-many relationship
+    public function roles() {
+
+        return $this->belongsToMany('App\Role');
+    }
 }

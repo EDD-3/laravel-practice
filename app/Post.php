@@ -17,6 +17,11 @@ class Post extends Model
 
     protected $fillable = [
         'title',
-        'content'
+        'content',
+        'user_id'
     ];
+    //One-to-one inverse relationship
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 }
