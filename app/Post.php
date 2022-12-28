@@ -22,6 +22,12 @@ class Post extends Model
     ];
     //One-to-one inverse relationship
     public function user() {
+
         return $this->belongsTo('App\User');
+    }
+
+    public function photos() {
+
+        return $this->morphMany('App\Photo', 'imageable');
     }
 }

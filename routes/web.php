@@ -155,10 +155,10 @@ use PhpParser\Node\Stmt\Foreach_;
 
 
 //Mass assignment vulnerability
-// Route::get('/create', function() {
+Route::get('/create', function() {
 
-//     Post::create([ 'user_id'=> 1,'title'=>'the create method 2', 'content' => 'Wow I\'m learning a lot with Edwin Diaz 2']);
-// });
+    Post::create([ 'user_id'=> 2,'title'=>'the create method 2', 'content' => 'Wow I\'m learning a lot with Edwin Diaz 2']);
+});
 
 // Route::get('/update', function () {
 //     Post::where('id', 2)->where('is_admin',0)->update(['title'=>'New PHP TITLE', 'content'=>'I love my instructor Edwin']);
@@ -278,12 +278,61 @@ use PhpParser\Node\Stmt\Foreach_;
 
 //Accessing the intermediate / pivtot table
 
-Route::get('/user/pivot', function () {
+// Route::get('/user/pivot', function () {
 
-    $user = User::find(1);
+//     $user = User::find(1);
 
-    foreach($user->roles as $role) {
-        echo $role->pivot->created_at;
-    }
+//     foreach($user->roles as $role) {
+//         echo $role->pivot->created_at;
+//     }
 
-});
+// });
+
+// Route::get('/user/country', function (){
+
+
+//     $country = Country::find(4);
+
+//     foreach ($country->posts as $post) {
+
+//         return  $post->title;
+//     }
+// });
+
+//Polymorphic relations
+
+//One-to-many polymorphic relations
+// Route::get('/photos', function () {
+
+//     $user = User::find(1);
+
+//     foreach ($user->photos as $photo) {
+        
+//         return $photo;
+//     }
+// });
+
+// Route::get('/post/{id}/photos', function($id) {
+
+//     $post = Post::find($id);
+
+//     foreach ($post->photos as $photo) {
+//         echo $photo->path . '<br>';
+//     }
+
+// });
+
+// Route::get('/photo/{id}/post', function($id) {
+
+//     try {
+        
+//         $photo = Photo::findOrFail($id);
+
+//         return $photo->imageable;
+
+//     } catch (Exception $error) {
+        
+//         return "Error message : " . $error->getMessage();
+//     }
+
+// });
