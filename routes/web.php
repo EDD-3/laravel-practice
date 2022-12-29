@@ -336,3 +336,20 @@ Route::get('/create', function() {
 //     }
 
 // });
+
+// Polymorphic Many-to-many
+
+Route::get('/post/tag', function() {
+    $post = Post::find(1);
+
+    foreach($post->tags as $tag) {
+        echo $tag;
+    }
+});
+
+Route::get('/tag/post', function() {
+
+    $tag = Tag::find(1);
+    return $tag->posts;
+    
+});
