@@ -339,17 +339,22 @@ Route::get('/create', function() {
 
 // Polymorphic Many-to-many
 
-Route::get('/post/tag', function() {
-    $post = Post::find(1);
+// Route::get('/post/tag', function() {
+//     $post = Post::find(1);
 
-    foreach($post->tags as $tag) {
-        echo $tag;
-    }
-});
+//     foreach($post->tags as $tag) {
+//         echo $tag;
+//     }
+// });
 
-Route::get('/tag/post', function() {
+// Route::get('/tag/post', function() {
 
-    $tag = Tag::find(1);
-    return $tag->posts;
+//     $tag = Tag::find(1);
+//     return $tag->posts;
     
-});
+// });
+
+
+// CRUD Application
+
+Route::resource('/posts', 'PostsController');
