@@ -390,5 +390,15 @@ Route::group(['middleware' => 'web'], function () {
 
         echo  $user->name;
     });
+
+    Route::get('/setname', function () {
+
+        $user = User::findOrFail(1);
+
+        $user->name = "william";
+
+        $user->save();
+
+    });
     
 });

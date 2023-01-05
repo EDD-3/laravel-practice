@@ -65,7 +65,21 @@ class User extends Authenticatable
     }
 
     //Accessor, transforms the data from the database without changing it in the database
+
+    // public function get{NameOfTheColumnInPascalCase}always call the function with an argument($value) {
+    // return ucfirst($value) the same argument with whatever methods yoo want
+    // }
+
     public function getNameAttribute($value) {
         return ucfirst($value);
+    }
+
+    //Mutator
+    //public function get{NameOfTheColumnInPascalCase}always  call the function with an argument($value) {
+    // return ucfirst($value) the same argument with whatever methods yoo want
+    // }
+
+    public function setNameAttribute($value) {
+        return $this->attributes['name'] = strtoupper($value);
     }
 }
