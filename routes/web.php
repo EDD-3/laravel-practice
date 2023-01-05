@@ -357,4 +357,10 @@ Route::get('/create', function() {
 
 // CRUD Application
 
-Route::resource('/posts', 'PostsController');
+
+
+Route::group(['middleware' => 'web'], function () {
+
+    Route::resource('/posts', 'PostsController');
+    
+});
