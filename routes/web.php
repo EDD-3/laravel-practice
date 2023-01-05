@@ -1,6 +1,8 @@
 <?php
 namespace App;
 
+use Carbon\Carbon;
+use DateTime;
 use Exception;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
@@ -362,5 +364,31 @@ Route::get('/create', function() {
 Route::group(['middleware' => 'web'], function () {
 
     Route::resource('/posts', 'PostsController');
+
+    Route::get('/dates', function() {
+
+        //Regular php
+        // $date = new DateTime('+1 week');
+
+        // echo $date->format('m-d-Y');
+
+        echo Carbon::now()->subMonths(5)->diffForHumans();
+
+        echo '<br>';
+ 
+        echo Carbon::now()->addDays(10)->diffForHumans();
+
+        echo '<br>';
+
+        echo Carbon::now()->yesterday();
+
+    });
+
+    Route::get('/getname', function () {
+
+        $user = User::find(1);
+
+        echo  $user->name;
+    });
     
 });
