@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Post extends Model
 {
     use SoftDeletes;
+
+    public $directory = '/images/';
     //
     //protected $table = 'posts';
     
@@ -45,10 +47,15 @@ class Post extends Model
 
 
  
-    public static function scopeLatest1($query) {
+    public static function scopeList($query) {
 
         return $query->orderBy('id', 'asc')->get();
 
+    }
+
+    //Accessor
+    public function getPathAttribute($value) {
+        return $this->directory . $value;
     }
 
 }

@@ -17,7 +17,7 @@ class PostsController extends Controller
     {
         //
 
-        $posts = Post::latest1();
+        $posts = Post::list();
 
 
         return view('posts.index', compact('posts'));
