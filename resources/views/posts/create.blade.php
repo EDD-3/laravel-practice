@@ -6,7 +6,11 @@
 {{-- 
     <form method="post" action="/posts">
         {{ csrf_field() }} --}}
-{!! Form::open(['method'=> 'POST', 'action' => 'PostsController@store']) !!}
+{!! Form::open(['method'=> 'POST', 'action' => 'PostsController@store', 'files'=> true]) !!}
+
+
+
+
 
 <div class="form-group">
 
@@ -16,6 +20,15 @@
 
 
 </div>
+
+
+<div class="form-group">
+    {!! Form::label('UploadLabel', 'Upload file:') !!}
+
+    {!! Form::file('file', null, ['class'=>'form-control']) !!}
+
+</div>
+
 
     <div class="form-group">
 
